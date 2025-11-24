@@ -1,0 +1,9 @@
+Metadata-Version: 2.4
+Name: todo
+Version: 0.1.0
+Summary: A Todo TUI application
+Author: SalladShooter
+Requires-Dist: windows-curses; sys_platform == "win32"
+Dynamic: author
+Dynamic: requires-dist
+Dynamic: summary
