@@ -34,7 +34,7 @@ def main(stdscr):
     help_win = curses.newwin(help_h, help_w, h-1, 0)
     help_win.addstr(0, 0, " NORMAL ", curses.A_BOLD | BLUE | curses.A_REVERSE )
     help_win.addstr(0, help_w-4, "   ", curses.A_BOLD)
-    help_win.addstr(0, help_w//2-(8//2), "H - HELP", WHITE)
+    help_win.addstr(0, help_w//2-(8//2), "h - HELP", WHITE)
     help_win.refresh()
 
     todo_h, todo_w = h-2, w//3
@@ -145,7 +145,7 @@ def main(stdscr):
 
         if key == ord('q'):
             break
-        elif key == ord('H'):
+        elif key == ord('h'):
             help_screen()
         elif key == 27:
             help_win.addstr(0, 0, " NORMAL ", curses.A_BOLD | BLUE | curses.A_REVERSE)
@@ -158,11 +158,14 @@ def main(stdscr):
                 select = False
         elif key == ord('d') or key == ord('r'):
             if current_column == 0:
-                todo_tasks.pop(current_index)
+                if len(todo_tasks) > 0:
+                    todo_tasks.pop(current_index)
             elif current_column == 1:
-                pro_tasks.pop(current_index)
+                if len(pro_tasks) > 0:
+                    pro_tasks.pop(current_index)
             else:
-                done_tasks.pop(current_index)
+                if len(done_tasks) > 0:
+                    done_tasks.pop(current_index)
             render_tasks()
         elif key == ord('a') or key == ord('i'):
             current_column = 0
